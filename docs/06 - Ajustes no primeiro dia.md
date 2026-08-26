@@ -1,5 +1,7 @@
 ---
 step: 6
+web-id: after
+nav-label: Pós-instalação
 status: não iniciado
 tags: [linux-mint, atualizações, drivers, timeshift, flathub]
 ---

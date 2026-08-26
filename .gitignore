@@ -4,3 +4,7 @@ node_modules/
 .env
 .env.*
 .vercel/
+
+# Estado pessoal da interface do Obsidian; as configurações compartilhadas do
+# cofre continuam versionadas em docs/.obsidian/.
+docs/.obsidian/workspace*.json

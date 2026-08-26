@@ -1,5 +1,7 @@
 ---
 step: 4
+web-id: disk
+nav-label: Particionamento
 status: não iniciado
 tags: [linux-mint, particionamento, ssd, hd, efi, swap, home]
 ---

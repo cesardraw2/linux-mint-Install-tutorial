@@ -1,5 +1,7 @@
 ---
 step: 3
+web-id: boot
+nav-label: Boot e instalador
 status: não iniciado
 tags: [linux-mint, boot, bios, uefi, instalador]
 ---

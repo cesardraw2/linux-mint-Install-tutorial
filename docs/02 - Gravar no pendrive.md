@@ -1,5 +1,7 @@
 ---
 step: 2
+web-id: usb
+nav-label: Gravar o pendrive
 status: não iniciado
 tags: [linux-mint, pendrive, rufus, etcher, usb]
 ---

@@ -1,5 +1,7 @@
 ---
 step: 0
+web-id: prereq
+nav-label: Antes de começar
 status: não iniciado
 tags: [linux-mint, preparação, backup]
 ---

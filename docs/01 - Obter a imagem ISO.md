@@ -1,5 +1,7 @@
 ---
 step: 1
+web-id: iso
+nav-label: Baixar a ISO
 status: não iniciado
 tags: [linux-mint, iso, download, cinnamon, xfce, mate]
 ---

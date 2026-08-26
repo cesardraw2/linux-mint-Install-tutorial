@@ -11,6 +11,9 @@ version: 1.0.0
 edition: Cinnamon
 release: 22.3 Zena
 author: cesardraw@gmail.com
+subtitle: Guia ilustrado · Série Padawan a Gedi
+description: Prints reais do site oficial, do Rufus, do Etcher e do instalador Cinnamon — para o você reconhecer o botão certo na hora H.
+hero-image: Anexos/wiki-mint-22-3.png
 ---
 
 # Instale o Linux Mint passo a passo

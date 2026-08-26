@@ -1,5 +1,7 @@
 ---
 step: 5
+web-id: finish
+nav-label: Usuário e reinício
 status: não iniciado
 tags: [linux-mint, usuário, senha, timezone, reinício]
 ---
