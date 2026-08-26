@@ -171,6 +171,9 @@ export default defineConfig(({ command, isPreview }) => ({
       ? [
           nitro({
             preset: "vercel",
+            // Keep the serverless function self-contained. Nitro v3 can trace
+            // tslib from Radix without copying it into Vercel's /var/task.
+            noExternals: true,
             // Auto-registers server/middleware/* (the PWA install page +
             // manifest + head-tag middleware). Nitro v3 defaults serverDir to
             // false, so removing this silently unwires /?install=1 on deploys.
