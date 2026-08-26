@@ -18,7 +18,10 @@
     "check:auth": "node scripts/check-auth-invariant.mjs",
     "test": "node --test 'scripts/**/*.test.mjs' && node --experimental-strip-types --test src/lib/app-data/app-data.test.ts src/lib/auth/gate-identity.test.ts",
     "lint": "eslint .",
-    "format": "prettier --write ."
+    "format:check": "prettier --check package.json src/components/guide.tsx src/lib/guide-content.ts '[Padawan a Gedi] Instalando o Linux Mint'/*.md",
+    "validate": "npm run format:check && npm run typecheck && npm run lint",
+    "prebuild": "npm run validate",
+    "format": "prettier --write package.json src/components/guide.tsx src/lib/guide-content.ts '[Padawan a Gedi] Instalando o Linux Mint'/*.md"
   },
   "dependencies": {
     "@electric-sql/pglite": "^0.5.4",
