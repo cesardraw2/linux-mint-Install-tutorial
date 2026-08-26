@@ -1,0 +1,23 @@
+{
+  "nodes": [
+    {"id":"home","type":"file","file":"Início.md","x":0,"y":0,"width":360,"height":240},
+    {"id":"s0","type":"file","file":"00 - Antes de começar.md","x":450,"y":-360,"width":340,"height":200},
+    {"id":"s1","type":"file","file":"01 - Obter a imagem ISO.md","x":450,"y":-110,"width":340,"height":200},
+    {"id":"s2","type":"file","file":"02 - Gravar no pendrive.md","x":450,"y":140,"width":340,"height":200},
+    {"id":"s3","type":"file","file":"03 - Boot e instalação.md","x":900,"y":-360,"width":340,"height":200},
+    {"id":"s4","type":"file","file":"04 - Particionamento.md","x":900,"y":-110,"width":340,"height":200},
+    {"id":"s5","type":"file","file":"05 - Usuário, espera e reinício.md","x":900,"y":140,"width":340,"height":200},
+    {"id":"s6","type":"file","file":"06 - Ajustes no primeiro dia.md","x":1350,"y":-110,"width":340,"height":200},
+    {"id":"sources","type":"file","file":"Fontes e créditos.md","x":1350,"y":140,"width":340,"height":200}
+  ],
+  "edges": [
+    {"id":"e0","fromNode":"home","fromSide":"right","toNode":"s0","toSide":"left"},
+    {"id":"e1","fromNode":"s0","fromSide":"right","toNode":"s1","toSide":"left"},
+    {"id":"e2","fromNode":"s1","fromSide":"bottom","toNode":"s2","toSide":"top"},
+    {"id":"e3","fromNode":"s2","fromSide":"right","toNode":"s3","toSide":"left"},
+    {"id":"e4","fromNode":"s3","fromSide":"bottom","toNode":"s4","toSide":"top"},
+    {"id":"e5","fromNode":"s4","fromSide":"bottom","toNode":"s5","toSide":"top"},
+    {"id":"e6","fromNode":"s5","fromSide":"right","toNode":"s6","toSide":"left"},
+    {"id":"e7","fromNode":"s6","fromSide":"bottom","toNode":"sources","toSide":"top"}
+  ]
+}

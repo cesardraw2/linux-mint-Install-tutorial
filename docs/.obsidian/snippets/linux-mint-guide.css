@@ -1,0 +1,22 @@
+body {
+  --interactive-accent: #3f6b2f;
+  --interactive-accent-hover: #315425;
+  --checkbox-color: #3f6b2f;
+  --link-color: #3f6b2f;
+  --link-color-hover: #315425;
+}
+
+.markdown-rendered h1,
+.markdown-rendered h2 {
+  letter-spacing: -0.02em;
+}
+
+.markdown-rendered img {
+  border-radius: 12px;
+  box-shadow: 0 1px 0 rgba(0, 0, 0, 0.14);
+}
+
+.markdown-rendered .task-list-item-checkbox {
+  width: 1.15rem;
+  height: 1.15rem;
+}
