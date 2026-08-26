@@ -19,6 +19,7 @@ import { Screenshot, ShotGrid, type Shot } from "@/components/screenshot";
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "mint-guide-done-v1";
+const GUIDE_VERSION = "1.0.0";
 
 const NAV = [
   { id: "prereq", label: "Antes de começar", num: "00" },
@@ -179,6 +180,18 @@ export function Guide() {
               . Desktop Cinnamon 22 e Rufus: Wikimedia Commons. Páginas de download: capturas de
               linuxmint.com e rufus.ie.
             </p>
+            <div className="mt-5 flex flex-col gap-1 border-t border-border/70 pt-5 sm:flex-row sm:items-center sm:justify-between">
+              <p>Versão do guia {GUIDE_VERSION}</p>
+              <p>
+                Desenvolvido por{" "}
+                <a
+                  className="text-muted underline-offset-2 hover:underline"
+                  href="mailto:cesardraw@gmail.com"
+                >
+                  cesardraw@gmail.com
+                </a>
+              </p>
+            </div>
           </footer>
         </main>
       </div>
@@ -192,13 +205,13 @@ function Hero() {
       <div className="mx-auto grid max-w-6xl items-stretch lg:grid-cols-[minmax(0,22rem)_1fr]">
         <div className="flex flex-col justify-end gap-5 px-4 py-10 text-leaf-fg sm:px-6 lg:py-16">
           <p className="text-xs font-medium tracking-[0.18em] text-sage uppercase">
-            Guia ilustrado · versão mais recente
+            Guia ilustrado · Série Padawan a Gedi
           </p>
           <h1 className="font-display text-4xl leading-tight font-medium tracking-tight sm:text-5xl">
-            Instale o Linux Mint vendo cada tela.
+            Instale o Linux Mint passo a passo.
           </h1>
           <p className="max-w-sm text-base text-leaf-fg/75">
-            Prints reais do site oficial, do Rufus, do Etcher e do instalador Cinnamon — para o aluno
+            Prints reais do site oficial, do Rufus, do Etcher e do instalador Cinnamon — para o você
             reconhecer o botão certo na hora H.
           </p>
           <div className="flex w-full flex-col gap-3 sm:flex-row sm:flex-wrap">
