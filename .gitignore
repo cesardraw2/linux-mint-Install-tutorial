@@ -3,5 +3,4 @@ node_modules/
 .github_repo
 .env
 .env.*
-.vercel/repo.json
-.vercel/README.txt
+.vercel/
