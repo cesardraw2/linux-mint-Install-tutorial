@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState, type ComponentType } from "react";
 import {
   ArrowRight,
   Check,
+  CircleAlert,
   Download,
   ExternalLink,
   HardDrive,
@@ -35,6 +36,7 @@ const SECTION_ICONS: Record<string, ComponentType<LucideProps>> = {
   disk: HardDrive,
   finish: UserRound,
   after: RefreshCw,
+  problems: CircleAlert,
 };
 
 function useDone() {
@@ -340,6 +342,7 @@ const markdownComponents: Components = {
   th: ({ children }) => <th className="py-2 pr-3 font-medium">{children}</th>,
   td: ({ children }) => <td className="py-3 pr-3 text-muted">{children}</td>,
   code: ({ children }) => <code className="font-mono text-sm text-ink">{children}</code>,
+  input: ({ style: _style, ...props }) => <input {...props} />,
 };
 
 function MarkdownContent({ markdown }: { markdown: string }) {

@@ -16,17 +16,21 @@ export type GuideSection = GuideDocument & {
   navLabel: string;
 };
 
-const noteSources = import.meta.glob("../../docs/*.md", {
+// `[[]` and `[]]` escape the literal brackets in the vault's folder name for Vite's glob syntax.
+const noteSources = import.meta.glob("../../[[]Padawan a Gedi[]] Instalando o Linux Mint/*.md", {
   eager: true,
   query: "?raw",
   import: "default",
 }) as Record<string, string>;
 
-const attachmentUrls = import.meta.glob("../../docs/Anexos/*", {
-  eager: true,
-  query: "?url",
-  import: "default",
-}) as Record<string, string>;
+const attachmentUrls = import.meta.glob(
+  "../../[[]Padawan a Gedi[]] Instalando o Linux Mint/Anexos/*",
+  {
+    eager: true,
+    query: "?url",
+    import: "default",
+  },
+) as Record<string, string>;
 
 function scalar(value: string): FrontmatterValue {
   const trimmed = value.trim();
@@ -118,7 +122,7 @@ export const guideSections: GuideSection[] = parsed
 export function attachmentUrl(obsidianPath: string): string | undefined {
   const normalized = obsidianPath.replace(/^\.\//, "");
   const entry = Object.entries(attachmentUrls).find(([path]) =>
-    path.endsWith(`/docs/${normalized}`),
+    path.endsWith(`/[Padawan a Gedi] Instalando o Linux Mint/${normalized}`),
   );
   return entry?.[1];
 }
