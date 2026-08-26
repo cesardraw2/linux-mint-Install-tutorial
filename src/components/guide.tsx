@@ -262,17 +262,38 @@ function normalizeObsidian(markdown: string): string {
       const url = attachmentUrl(path.trim());
       return url ? `![${path.split("/").at(-1) ?? "Imagem do guia"}](${url})` : "";
     })
-    .replace(
-      /\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g,
-      (_, target: string, label?: string) => label ?? target,
-    )
+    .replace(/\[\[([^\]|]+)(?:\|([^\]]+))?\]\]/g, (_, rawTarget: string, label?: string) => {
+      const [target, heading] = rawTarget.split("#", 2);
+      const section = guideSections.find(
+        (item) => !target.trim() || item.sourcePath.endsWith(`/${target.trim()}.md`),
+      );
+      const anchor = heading ? slugify(heading) : section?.id;
+      return anchor ? `[${label ?? heading ?? target}](#${anchor})` : (label ?? target);
+    })
     .replace(/^\[←[^\n]+$/gm, "")
     .replace(/^> \[!\w+\]\s*(.+)$/gm, "> **$1**");
 }
 
+function slugify(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
 const markdownComponents: Components = {
-  h2: ({ children }) => <h3 className="font-display text-2xl font-medium">{children}</h3>,
-  h3: ({ children }) => <h4 className="font-display text-xl font-medium">{children}</h4>,
+  h2: ({ children }) => (
+    <h3 id={slugify(String(children))} className="font-display text-2xl font-medium">
+      {children}
+    </h3>
+  ),
+  h3: ({ children }) => (
+    <h4 id={slugify(String(children))} className="font-display text-xl font-medium">
+      {children}
+    </h4>
+  ),
   // Markdown wraps standalone images in paragraphs; a div keeps the Screenshot
   // figure valid while preserving paragraph rhythm for ordinary prose.
   p: ({ children }) => <div className="leading-relaxed text-muted">{children}</div>,
