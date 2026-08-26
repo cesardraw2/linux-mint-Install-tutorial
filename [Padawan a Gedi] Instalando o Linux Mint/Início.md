@@ -32,9 +32,13 @@ hero-image: Anexos/wiki-mint-22-3.png
 - [ ] [[04 - Particionamento]]
 - [ ] [[05 - Usuário, espera e reinício]]
 - [ ] [[06 - Ajustes no primeiro dia]]
+- [ ] [[07 - Problemas comuns]]
 
 > [!tip] Como continuar de onde parou
 > Marque cada caixa ao concluir a etapa. O Obsidian salva a alteração no arquivo e mantém seu progresso. Use os links **Anterior**, **Início** e **Próxima** no final de cada nota.
+
+> [!important] Escolha seu cenário
+> Este guia foi escrito para uma instalação do Mint. **Dual boot** significa manter Windows e Linux no mesmo computador e escolher um deles ao ligar. Se essa é a sua meta, pare antes do particionamento e leia todos os avisos da etapa 00.
 
 ## Navegação visual
 

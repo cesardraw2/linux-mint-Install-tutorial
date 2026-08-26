@@ -8,7 +8,10 @@ tags: [linux-mint, atualizações, drivers, timeshift, flathub]
 
 # 06 — Quatro ajustes no primeiro dia
 
-O sistema já funciona. Estes quatro ajustes deixam o Mint seguro, com vídeo acelerado e loja de apps completa.
+Esta etapa acontece depois do primeiro login no Mint instalado. O sistema já funciona; faça os quatro ajustes na ordem e reinicie somente quando o próprio sistema pedir.
+
+> [!tip] Rotina curta
+> Faça **um ajuste**, marque-o na lista e passe ao próximo. Se uma opção não aparecer, não force: anote o modelo do computador e procure orientação específica.
 
 ## 1. Atualizações
 

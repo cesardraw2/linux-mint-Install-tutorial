@@ -6,11 +6,28 @@ status: não iniciado
 tags: [linux-mint, boot, bios, uefi, instalador]
 ---
 
-# 03 — Boot e instalação
+# 03 — Boot e instalação no computador de destino
+
+Agora você sai do computador que preparou o pendrive e vai para o **computador de destino**.
+
+## Antes de apertar qualquer botão
+
+1. Confirme que o backup está pronto.
+2. Confirme se este computador é uma instalação limpa ou um dual boot.
+3. Conecte o pendrive inicializável.
+4. Só então reinicie e abra o menu de boot.
+
+> [!danger] Pare se a intenção for dual boot
+> **Instalação limpa:** você pode continuar neste guia, pois o disco escolhido será substituído.
+> **Dual boot:** você quer preservar o Windows. Não escolha `Erase disk` e não continue pelo caminho de instalação limpa sem uma orientação própria.
 
 Reinicie com o pendrive conectado. Entre no menu de boot e escolha o pendrive — não o disco interno.
 
-## Teclas de boot mais comuns
+## Escolha o pendrive no menu de boot
+
+O menu de boot aparece antes do Windows ou do Linux iniciar. Escolha o pendrive, não o disco interno.
+
+### Teclas de boot mais comuns
 
 | Marca    | Tecla                |
 | -------- | -------------------- |

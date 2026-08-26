@@ -6,7 +6,15 @@ status: não iniciado
 tags: [linux-mint, particionamento, ssd, hd, efi, swap, home]
 ---
 
-# 04 — Particionamento
+# 04 — Particionamento: escolha com cuidado
+
+Esta etapa acontece no **computador de destino**. O computador usado para baixar a ISO e preparar o pendrive já cumpriu o papel dele.
+
+## Decida qual cenário é o seu
+
+- **Instalação limpa:** o disco de destino pode ser apagado. `Erase disk and install Linux Mint` instala o Mint sozinho nesse disco.
+- **Windows + Mint (dual boot):** o Windows precisa continuar intacto. Não escolha `Erase disk`; use `Install Linux Mint alongside Windows` apenas com backup e entendendo o redimensionamento automático.
+- **Algo mais:** é o particionamento manual. Ele não é uma “opção segura” por si só; um clique na partição errada pode apagar dados.
 
 > [!danger] A tela mais fácil de errar
 > **Erase disk** apaga o Windows inteiro. **Something else / Algo mais** permite criar EFI, swap, `/` e `/home` manualmente.
@@ -27,20 +35,20 @@ A opção **Erase disk and install Linux Mint** formata o disco escolhido. Só u
 
 ## Esquema recomendado — SSD + HD
 
-| Ponto | Tamanho | Formato | Disco | Função |
-|---|---:|---|---|---|
-| EFI | 500 MB | FAT32 | SSD | Boot UEFI |
-| swap | 4–8 GB | swap | SSD | Memória virtual |
-| `/` | 50–100 GB | ext4 | SSD | Sistema e programas |
-| `/home` | restante | ext4 | HD | Arquivos pessoais |
+| Ponto   |   Tamanho | Formato | Disco | Função              |
+| ------- | --------: | ------- | ----- | ------------------- |
+| EFI     |    500 MB | FAT32   | SSD   | Boot UEFI           |
+| swap    |    4–8 GB | swap    | SSD   | Memória virtual     |
+| `/`     | 50–100 GB | ext4    | SSD   | Sistema e programas |
+| `/home` |  restante | ext4    | HD    | Arquivos pessoais   |
 
 ## Esquema recomendado — somente SSD
 
-| Ponto | Tamanho | Formato | Disco | Função |
-|---|---:|---|---|---|
-| EFI | 500 MB | FAT32 | SSD | Boot UEFI |
-| swap | 4–8 GB | swap | SSD | Memória virtual |
-| `/` | restante | ext4 | SSD | Sistema, apps e arquivos |
+| Ponto |  Tamanho | Formato | Disco | Função                   |
+| ----- | -------: | ------- | ----- | ------------------------ |
+| EFI   |   500 MB | FAT32   | SSD   | Boot UEFI                |
+| swap  |   4–8 GB | swap    | SSD   | Memória virtual          |
+| `/`   | restante | ext4    | SSD   | Sistema, apps e arquivos |
 
 > [!note] Swap e EFI
 > Se pular a swap, o Mint cria um `swapfile` na raiz. Em PCs UEFI, a EFI de 500 MB FAT32 é obrigatória; não a monte em `/`.

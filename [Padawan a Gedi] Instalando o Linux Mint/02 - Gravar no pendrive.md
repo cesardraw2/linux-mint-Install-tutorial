@@ -8,7 +8,7 @@ tags: [linux-mint, pendrive, rufus, etcher, usb]
 
 # 02 — Gravar no pendrive
 
-Não basta copiar o arquivo `.iso` para o pendrive. É preciso gravar a imagem com Rufus no Windows ou Etcher/USB Image Writer no Linux.
+Esta etapa acontece no **computador funcionando**, antes de mexer no computador de destino. Não basta copiar o arquivo `.iso` para o pendrive: é preciso gravar a imagem com uma ferramenta própria.
 
 ## Escolha uma das duas formas
 
@@ -17,7 +17,7 @@ Você vai criar **um pendrive inicializável do Linux Mint**. O resultado é o m
 - **Está no Windows:** use o **Rufus**.
 - **Está no Linux:** use o **Etcher** ou o **USB Image Writer**.
 
-Não faça as duas opções. Siga apenas a sessão correspondente ao seu computador.
+Não faça as duas opções. Siga apenas a sessão correspondente ao sistema que está funcionando agora.
 
 ## Se você for usar Windows para gravar o pendrive — Rufus
 

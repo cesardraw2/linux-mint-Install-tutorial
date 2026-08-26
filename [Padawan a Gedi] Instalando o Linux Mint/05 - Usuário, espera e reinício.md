@@ -8,7 +8,10 @@ tags: [linux-mint, usuário, senha, timezone, reinício]
 
 # 05 — Usuário, espera e reinício
 
-Depois do disco, o instalador pede fuso horário e a conta. Aí é café.
+Se você chegou aqui, a decisão de instalação e as partições já foram confirmadas. Agora o instalador pede apenas fuso horário, usuário e senha.
+
+> [!tip] Faça uma coisa por vez
+> Preencha uma tela, confira o que escreveu e só depois clique em **Continue**. Durante a cópia, não desligue o computador.
 
 ## Fuso horário
 

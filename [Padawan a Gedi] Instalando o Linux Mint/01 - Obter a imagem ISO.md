@@ -8,6 +8,11 @@ tags: [linux-mint, iso, download, cinnamon, xfce, mate]
 
 # 01 — Obter a imagem ISO
 
+**Faça esta etapa no computador que está funcionando.** Ele pode ser Windows ou Linux. Você vai baixar a ISO para esse computador e depois usá-la para preparar o pendrive.
+
+> [!tip] Um passo de cada vez
+> Nesta etapa você só vai **baixar e conferir a ISO**. Ainda não reinicie o computador de destino e ainda não formate nenhum disco.
+
 > [!warning] Baixe somente do site oficial
 > Espelhos de terceiros e “ISO turbo” são o jeito mais comum de levar malware.
 

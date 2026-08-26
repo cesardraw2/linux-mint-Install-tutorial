@@ -10,6 +10,20 @@ tags: [linux-mint, preparação, backup]
 
 Três coisas. Sem elas o instalador trava no meio ou você perde arquivo.
 
+## Primeiro: entenda os dois computadores
+
+Você começa em um **computador que está funcionando** — Windows ou Linux — para baixar a imagem ISO e criar o pendrive inicializável.
+
+Depois, você usa esse pendrive no **computador de destino**, onde o Linux Mint será instalado.
+
+- Se o computador de destino ainda inicia Windows ou Linux, ele pode fazer as duas tarefas.
+- Se o computador de destino está sem sistema ou não inicia, use outro computador funcionando para preparar o pendrive.
+- O pendrive será apagado durante a gravação. Separe um pendrive de 8 GB ou mais.
+
+> [!tip] Regra simples
+> **Computador funcionando → baixar ISO e preparar pendrive.**
+> **Computador de destino → iniciar pelo pendrive e instalar o Mint.**
+
 ## O que este caminho instala
 
 Este caminho instala o Linux Mint; **não é um tutorial completo de dual boot (Windows e Linux na mesma máquina)**.
@@ -31,6 +45,13 @@ Se o computador estiver em Legacy, o Mint ainda pode iniciar em modo BIOS/Legacy
 
 > [!warning] Caso Dell Legacy
 > Se o Windows do seu Dell aparece como `Legacy`, não mude para UEFI sem um plano de recuperação e backup. A Dell alerta que trocar o modo pode deixar a instalação atual do Windows sem inicializar; em modelos mais novos, Legacy pode nem ser suportado. Se a configuração estiver confusa, pare nesta etapa e confirme o modelo exato.
+
+## Escolha o caminho antes de continuar
+
+- **Instalação limpa:** você aceita apagar o sistema e os arquivos do disco de destino. Siga este guia e use `Erase disk` somente depois de conferir o disco.
+- **Dual boot:** você quer manter o Windows e escolher Windows ou Linux ao ligar o computador. Pare e siga uma orientação específica de dual boot; não use `Erase disk`.
+
+Se você não sabe qual dos dois quer, **pare antes do particionamento**. Resolva essa dúvida antes de clicar em qualquer botão que formate um disco.
 
 ## Checklist
 
