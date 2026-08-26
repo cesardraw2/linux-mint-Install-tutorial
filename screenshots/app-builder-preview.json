@@ -1,0 +1,36 @@
+{
+  "url": "http://127.0.0.1:8080/",
+  "viewports": {
+    "desktop": {
+      "width": 1280,
+      "height": 800,
+      "status": 200,
+      "title": "Instalar Linux Mint",
+      "hasCanvas": false,
+      "bodyTextLen": 11137,
+      "bodyTextHash": "0ebf4d73b1994e0e5dc7270a462e4f88fd8f647b8acd57a694c03b940bfd40a9",
+      "bodyTextPrefix": "Pular para o conteúdo Instalar Linux Mint 22.3 Zena · Cinnamon 0",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview.png"
+    },
+    "mobile": {
+      "width": 390,
+      "height": 844,
+      "status": 200,
+      "title": "Instalar Linux Mint",
+      "hasCanvas": false,
+      "bodyTextLen": 11111,
+      "bodyTextHash": "d0b67c27831913b3fbc2fc6d50242e65d4b3d2e8dd1fa2bf1c3e73e92c7f37ca",
+      "bodyTextPrefix": "Pular para o conteúdo Instalar Linux Mint 22.3 Zena · Cinnamon G",
+      "horizontalOverflow": false,
+      "consoleErrors": [],
+      "pageErrors": [],
+      "screenshot": "/workspace/screenshots/app-builder-preview-mobile.png"
+    }
+  },
+  "brandWarnings": [],
+  "authWarnings": [],
+  "verdictFile": "/workspace/screenshots/app-builder-preview.json"
+}

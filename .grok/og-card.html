@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8" />
+  <title>Instalar Linux Mint</title>
+  <style>
+    @font-face {
+      font-family: "Fraunces";
+      font-style: normal;
+      font-weight: 700;
+      src: url("fonts/fraunces-700-latin.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Source Sans 3";
+      font-style: normal;
+      font-weight: 600;
+      src: url("fonts/source-sans-600-latin.woff2") format("woff2");
+    }
+    @font-face {
+      font-family: "Source Sans 3";
+      font-style: normal;
+      font-weight: 700;
+      src: url("fonts/source-sans-700-latin.woff2") format("woff2");
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    html, body {
+      width: 1200px;
+      height: 630px;
+      overflow: hidden;
+      background: #f3efe4;
+      color: #1a1c16;
+      -webkit-font-smoothing: antialiased;
+    }
+    .card {
+      position: relative;
+      width: 1200px;
+      height: 630px;
+      background:
+        radial-gradient(ellipse 70% 55% at 50% 46%, rgba(135, 160, 90, 0.16), transparent 70%),
+        #f3efe4;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .grain {
+      position: absolute;
+      inset: 0;
+      opacity: 0.07;
+      pointer-events: none;
+      background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>");
+      mix-blend-mode: multiply;
+    }
+    .frame {
+      position: absolute;
+      inset: 36px;
+      border: 1.5px solid rgba(63, 107, 47, 0.28);
+      border-radius: 4px;
+      pointer-events: none;
+    }
+    .frame::after {
+      content: "";
+      position: absolute;
+      inset: 8px;
+      border: 1px solid rgba(135, 160, 90, 0.35);
+      border-radius: 2px;
+    }
+    .watermark {
+      position: absolute;
+      left: 50%;
+      top: 46%;
+      width: 420px;
+      height: 420px;
+      transform: translate(-50%, -54%);
+      opacity: 0.07;
+      pointer-events: none;
+    }
+    .lockup {
+      position: relative;
+      z-index: 1;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      width: 720px;
+    }
+    .mark {
+      width: 72px;
+      height: 72px;
+      margin-bottom: 28px;
+    }
+    .kicker {
+      font-family: "Source Sans 3", "Liberation Sans", sans-serif;
+      font-weight: 700;
+      font-size: 22px;
+      letter-spacing: 0.38em;
+      text-indent: 0.38em;
+      text-transform: uppercase;
+      color: #3f6b2f;
+      margin-bottom: 10px;
+    }
+    h1 {
+      font-family: "Fraunces", "Bitstream Charter", serif;
+      font-weight: 700;
+      font-size: 108px;
+      line-height: 0.92;
+      letter-spacing: -0.02em;
+      color: #1a1c16;
+      font-optical-sizing: auto;
+    }
+    .rule {
+      width: 72px;
+      height: 2px;
+      background: #87a05a;
+      margin: 26px 0 18px;
+      border-radius: 1px;
+    }
+    .tag {
+      font-family: "Source Sans 3", "Liberation Sans", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      letter-spacing: 0.16em;
+      text-indent: 0.16em;
+      text-transform: uppercase;
+      color: #5c6154;
+    }
+    .panel {
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: 0;
+      height: 12px;
+      background: #3f6b2f;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <div class="grain"></div>
+    <svg class="watermark" viewBox="0 0 64 64" aria-hidden="true">
+      <path fill="#3f6b2f" d="M32 4.4c14.8 8.8 23.6 26 19.2 40.4C48.2 55.6 37.6 60.4 32 60.4S15.8 55.6 12.8 44.8C8.4 30.4 17.2 13.2 32 4.4z"/>
+    </svg>
+    <div class="frame"></div>
+    <div class="lockup">
+      <svg class="mark" viewBox="0 0 64 64" aria-hidden="true">
+        <path fill="#3f6b2f" d="M32 4.4c14.8 8.8 23.6 26 19.2 40.4C48.2 55.6 37.6 60.4 32 60.4S15.8 55.6 12.8 44.8C8.4 30.4 17.2 13.2 32 4.4z"/>
+        <path fill="none" stroke="#87a05a" stroke-width="2.2" stroke-linecap="round" d="M32 16v32"/>
+        <path fill="none" stroke="#87a05a" stroke-width="1.5" stroke-linecap="round" d="M32 26c6.5 4.5 10.5 9 12.5 13M32 26c-6.5 4.5-10.5 9-12.5 13"/>
+      </svg>
+      <div class="kicker">Instalar</div>
+      <h1>Linux Mint</h1>
+      <div class="rule"></div>
+      <div class="tag">Guia 22.3 · Cinnamon</div>
+    </div>
+    <div class="panel"></div>
+  </div>
+</body>
+</html>
