@@ -32,6 +32,17 @@ Dual boot significa manter dois sistemas operacionais no mesmo computador e esco
 
 Se você quer manter o Windows, siga a trilha completa [[09 - Dual boot com Windows|Dual boot com Windows]]. Ela explica backup, BitLocker, modo de inicialização, espaço livre e como conferir a tela do instalador.
 
+## Um SSD interno e um HD externo, sem dual boot
+
+Este é um cenário simples e recomendado para começar:
+
+- instale o Linux Mint no **SSD interno**; ele será mais rápido e continuará funcionando mesmo sem acessórios conectados;
+- use o **HD externo para o backup** antes da instalação e, depois, para documentos, fotos e vídeos;
+- não instale o sistema no HD externo nesta primeira tentativa: o computador ficaria dependente do cabo, da porta USB e da ordem de boot;
+- desconecte o HD externo antes de confirmar a instalação e conecte-o novamente somente depois de o Mint iniciar.
+
+Se o SSD ainda contém Windows e ele não será mantido, a opção `Erase disk and install Linux Mint` pode apagar **somente o SSD**, depois de conferir o modelo e o tamanho do disco. O backup no HD externo deve ser aberto e conferido antes de apagar qualquer coisa.
+
 > [!danger] Não misture os modos de inicialização
 > Windows e Linux devem ser instalados no mesmo modo de inicialização: os dois em **UEFI** ou os dois em **Legacy/BIOS**. Não troque Legacy por UEFI “para testar” depois que o Windows já funciona; em alguns computadores isso impede o Windows de iniciar.
 
@@ -48,7 +59,7 @@ Se o computador estiver em Legacy, o Mint ainda pode iniciar em modo BIOS/Legacy
 
 ## Escolha o caminho antes de continuar
 
-- **Instalação limpa:** você aceita apagar o sistema e os arquivos do disco de destino. Siga este guia e use `Erase disk` somente depois de conferir o disco.
+- **Instalação limpa (SSD único):** você aceita apagar o sistema e os arquivos do SSD interno. Faça backup no HD externo, desconecte-o e use `Erase disk` somente depois de conferir o disco.
 - **Dual boot:** você quer manter o Windows e escolher Windows ou Linux ao ligar o computador. Abra [[09 - Dual boot com Windows|a trilha de dual boot]] e não use `Erase disk`.
 
 Se você não sabe qual dos dois quer, **pare antes do particionamento**. Resolva essa dúvida antes de clicar em qualquer botão que formate um disco.

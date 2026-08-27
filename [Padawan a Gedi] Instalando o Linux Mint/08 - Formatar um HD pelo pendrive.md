@@ -10,6 +10,9 @@ tags: [linux-mint, pendrive, live, formatar, hd, ssd, gparted, discos]
 
 Esta sessão ensina a **preparar um HD ou SSD para guardar arquivos** usando a sessão live do pendrive do Linux Mint. Ela não instala o Mint e não é uma etapa obrigatória da instalação.
 
+> [!tip] SSD para o sistema, HD externo para os dados
+> Se o Mint será instalado sozinho no SSD interno, use o HD externo primeiro para o backup e só o formate depois de confirmar que a instalação iniciou corretamente. Um HD externo não substitui uma segunda cópia do backup.
+
 > [!danger] Formatar apaga dados
 > Formatar uma partição apaga os arquivos dela. Criar uma nova tabela de partições apaga a organização do disco inteiro. Faça backup e confira o modelo e o tamanho do disco antes de confirmar.
 
