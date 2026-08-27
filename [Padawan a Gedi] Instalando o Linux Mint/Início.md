@@ -33,6 +33,7 @@ hero-image: Anexos/wiki-mint-22-3.png
 - [ ] [[05 - Usuário, espera e reinício]]
 - [ ] [[06 - Ajustes no primeiro dia]]
 - [ ] [[07 - Problemas comuns]]
+- [ ] [[08 - Formatar um HD pelo pendrive]]
 
 > [!tip] Como continuar de onde parou
 > Marque cada caixa ao concluir a etapa. O Obsidian salva a alteração no arquivo e mantém seu progresso. Use os links **Anterior**, **Início** e **Próxima** no final de cada nota.
