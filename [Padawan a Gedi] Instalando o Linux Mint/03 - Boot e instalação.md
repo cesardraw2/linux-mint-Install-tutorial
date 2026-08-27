@@ -42,6 +42,18 @@ O menu de boot aparece antes do Windows ou do Linux iniciar. Escolha o pendrive,
 
 Aperte a tecla assim que o logo da marca aparecer.
 
+> [!tip] Menu temporário é mais seguro
+> Você não precisa mudar a ordem permanente. Ligue o computador e pressione a tecla de **Boot Menu** indicada na tabela (no Dell, `F12`). Se a tecla não funcionar, tente pressioná-la repetidamente logo após ligar ou consulte a mensagem no rodapé da tela e o manual do modelo.
+
+### O que aparece depois do F12
+
+No Dell Vostro 5402, escolha **Removable Drive** ou o nome do pendrive. Em outros computadores, a mesma entrada pode aparecer como `USB Storage`, `UEFI: nome-do-pendrive` ou `USB HDD`.
+
+![[Anexos/official-grub-efi.png]]
+
+> [!success] Nesta tela do Mint
+> Deixe **Start Linux Mint** destacado e pressione `Enter`. A opção **compatibility mode** é um plano B para tela preta ou vídeo incompatível. Essa tela inicia uma sessão live; ela ainda não instala nada.
+
 ## UEFI, Legacy e Secure Boot
 
 Esses nomes descrevem o **modo como o firmware inicia o sistema**, não a edição do Mint:
@@ -55,6 +67,9 @@ Esses nomes descrevem o **modo como o firmware inicia o sistema**, não a ediç�
 Para dual boot, os dois sistemas devem usar o mesmo modo. O Linux Mint pode iniciar a ISO em EFI ou BIOS, mas misturar os modos costuma fazer um dos sistemas desaparecer do menu de boot.
 
 **Secure Boot exige UEFI.** Em um Dell, ver `Legacy` e “boot seguro” ao mesmo tempo pode significar que o Secure Boot está desligado e que apenas `Legacy Option ROMs` está habilitado — os textos mudam conforme o modelo. Não troque Legacy/UEFI, Secure Boot ou AHCI por tentativa e erro: fotografe a configuração atual, faça backup e consulte o manual do modelo.
+
+> [!note] Dell Vostro 5402
+> Este modelo trabalha em **UEFI only**; Legacy não é suportado. Para ele, prepare o pendrive em GPT/UEFI e use `F12 → Removable Drive`. Se a entrada USB não aparecer, confira `F2 → Integrated Devices → USB Configuration → Enable USB Boot Support`.
 
 > [!warning] Secure Boot
 > Em UEFI, desative o Secure Boot se o pendrive não iniciar.

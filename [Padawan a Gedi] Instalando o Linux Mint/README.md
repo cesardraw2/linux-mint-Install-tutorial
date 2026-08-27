@@ -34,5 +34,5 @@ Essa abordagem ajuda especialmente pessoas com TDAH e outras formas de neurodive
 
 O aluno não precisa montar mentalmente o próprio plano: o sistema organiza o caminho a partir do cenário escolhido. Os cenários e suas tarefas ficam documentados em [[BDD - Cenários de instalação|BDD - Cenários de instalação]], para edição e revisão no próprio cofre.
 
-Versão do guia: **1.2.0**
+Versão do guia: **1.2.1**
 Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)
