@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="http://www.omg.org/spec/BPMN/20100524/MODEL" id="Definitions_F001" targetNamespace="https://linux-mint-install-tutorial.dev/bpmn">
+  <process id="F001" name="Planejamento por cenário do guia Linux Mint" isExecutable="false">
+    <laneSet id="LSF001">
+      <lane id="LF001.1" name="Aluno" />
+      <lane id="LF001.2" name="Guia web" />
+    </laneSet>
+    <startEvent id="SF001" name="Aluno inicia o guia" />
+    <userTask id="AF001.1" name="Escolher cenário de instalação" />
+    <exclusiveGateway id="GF001.1" name="Qual cenário?" />
+    <serviceTask id="AF001.2" name="Carregar TODO do cenário" />
+    <userTask id="AF001.3" name="Executar tarefas e marcar progresso" />
+    <endEvent id="EF001" name="Cenário concluído" />
+    <sequenceFlow id="SFF001.1" sourceRef="SF001" targetRef="AF001.1" />
+    <sequenceFlow id="SFF001.2" sourceRef="AF001.1" targetRef="GF001.1" />
+    <sequenceFlow id="SFF001.3" sourceRef="GF001.1" targetRef="AF001.2" />
+    <sequenceFlow id="SFF001.4" sourceRef="AF001.2" targetRef="AF001.3" />
+    <sequenceFlow id="SFF001.5" sourceRef="AF001.3" targetRef="EF001" />
+  </process>
+</definitions>

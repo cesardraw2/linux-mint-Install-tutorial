@@ -20,5 +20,5 @@ As caixas de seleção guardam o progresso no próprio arquivo Markdown. O [[Map
 
 O fluxo principal prepara a ISO, cria um pendrive e instala o Mint. Ele não substitui um tutorial específico de dual boot.
 
-Versão do guia: **1.0.0**  
+Versão do guia: **1.1.0**
 Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)

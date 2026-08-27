@@ -12,7 +12,7 @@ tags: [fontes, créditos, linux-mint]
 - [Dell — Secure Boot e modo UEFI](https://www.dell.com/support/kbdoc/en-us/000190116/how-to-enable-secure-boot-on-your-dell-device): relação entre Secure Boot, UEFI e Legacy.
 - [GParted — Manual](https://gparted.org/display-doc.php?name=help-manual): desmontagem, formatação e riscos de edição de partições.
 
-Versão do guia: **1.0.0**  
+Versão do guia: **1.1.0**
 Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)
 
 [[Início|← Voltar ao início]]

@@ -1,5 +1,7 @@
 type FrontmatterValue = string | number | string[];
 
+import bddMarkdown from "../../[Padawan a Gedi] Instalando o Linux Mint/BDD - Cenários de instalação.md?raw";
+
 export type GuideMeta = Record<string, FrontmatterValue>;
 
 export type GuideDocument = {
@@ -15,6 +17,23 @@ export type GuideSection = GuideDocument & {
   number: string;
   navLabel: string;
 };
+
+export type GuideScenarioTask = {
+  id: string;
+  label: string;
+  sectionId?: string;
+};
+
+export type GuideScenario = {
+  id: string;
+  label: string;
+  summary: string;
+  tasks: GuideScenarioTask[];
+};
+
+export type GuideScenarioTaskState = Record<string, boolean>;
+
+export type GlossaryEntry = { id: string; term: string; definition: string };
 
 // `[[]` and `[]]` escape the literal brackets in the vault's folder name for Vite's glob syntax.
 const noteSources = import.meta.glob("../../[[]Padawan a Gedi[]] Instalando o Linux Mint/*.md", {
@@ -105,6 +124,13 @@ const parsed = Object.entries(noteSources).map(([path, source]) => parseDocument
 
 export const guideHome = parsed.find((doc) => doc.sourcePath.endsWith("/Início.md"))!;
 export const guideCredits = parsed.find((doc) => doc.sourcePath.endsWith("/Fontes e créditos.md"))!;
+const bddEntry = Object.entries(noteSources).find(([sourcePath]) =>
+  sourcePath.toLowerCase().includes("bdd"),
+);
+export const guideBdd = parseDocument(
+  bddEntry?.[0] ?? "BDD - Cenários de instalação.md",
+  bddMarkdown,
+);
 
 export const guideSections: GuideSection[] = parsed
   .filter((doc) => /^\d{2}\s+-/.test(doc.sourcePath.split("/").at(-1) ?? ""))
@@ -118,6 +144,67 @@ export const guideSections: GuideSection[] = parsed
     };
   })
   .sort((a, b) => Number(a.meta.step) - Number(b.meta.step));
+
+export const guideGlossarySection = guideSections.find((section) => section.id === "glossary");
+
+export const glossaryEntries: GlossaryEntry[] = guideGlossarySection
+  ? guideGlossarySection.body
+      .split(/^###\s+/m)
+      .slice(1)
+      .map((chunk) => {
+        const newline = chunk.indexOf("\n");
+        const term = (newline < 0 ? chunk : chunk.slice(0, newline)).trim();
+        const content = newline < 0 ? "" : chunk.slice(newline + 1);
+        return {
+          id: slugify(term),
+          term,
+          definition: content.replace(/^>.*$/gm, "").replace(/\s+/g, " ").trim(),
+        };
+      })
+      .map((entry) => ({
+        id: entry.id,
+        term: entry.term,
+        definition: entry.definition,
+      }))
+      .filter((entry) => entry.definition)
+  : [];
+
+function parseScenarios(markdown: string): GuideScenario[] {
+  return markdown
+    .split(/^##\s+/m)
+    .slice(1)
+    .map((chunk): GuideScenario | null => {
+      const newline = chunk.indexOf("\n");
+      const heading = (newline < 0 ? chunk : chunk.slice(0, newline)).trim();
+      const block = newline < 0 ? "" : chunk.slice(newline + 1);
+      if (!heading.toLocaleLowerCase().startsWith("cenário:")) return null;
+      const id = heading.replace(/^Cenário:\s*/i, "").trim();
+      const label = block.match(/^nome:\s*(.+)$/m)?.[1]?.trim() ?? id;
+      const summary = block.match(/^resumo:\s*(.+)$/m)?.[1]?.trim() ?? "";
+      const tasks: GuideScenarioTask[] = [
+        ...block.matchAll(/^-\s+\[\s*\]\s+\[([^\]]+)\]\s+(.+)$/gm),
+      ].map(([, sectionId, taskLabel], index) => ({
+        id: `${id}-${index + 1}`,
+        label: taskLabel.trim(),
+        sectionId: guideSections.find((section) => section.number === sectionId)?.id,
+      }));
+      return { id, label, summary, tasks };
+    })
+    .filter((scenario): scenario is GuideScenario =>
+      Boolean(scenario && scenario.tasks.length > 0),
+    );
+}
+
+function slugify(value: string): string {
+  return value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-|-$/g, "");
+}
+
+export const guideScenarios = parseScenarios(bddMarkdown);
 
 export function attachmentUrl(obsidianPath: string): string | undefined {
   const normalized = obsidianPath.replace(/^\.\//, "");

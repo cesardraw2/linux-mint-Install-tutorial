@@ -7,7 +7,7 @@ tags:
   - linux-mint
   - instalação
   - série-padawan-a-gedi
-version: 1.0.0
+version: 1.1.0
 edition: Cinnamon
 release: 22.3 Zena
 author: cesardraw@gmail.com
@@ -35,12 +35,17 @@ hero-image: Anexos/wiki-mint-22-3.png
 - [ ] [[07 - Problemas comuns]]
 - [ ] [[08 - Formatar um HD pelo pendrive]]
 - [ ] [[09 - Dual boot com Windows]]
+- [ ] [[10 - Glossário]]
+- [ ] [[10 - Glossário]]
 
 > [!tip] Como continuar de onde parou
 > Marque cada caixa ao concluir a etapa. O Obsidian salva a alteração no arquivo e mantém seu progresso. Use os links **Anterior**, **Início** e **Próxima** no final de cada nota.
 
 > [!important] Escolha seu cenário
 > **Instalação limpa** apaga o sistema do disco escolhido. **Dual boot** mantém Windows e Linux no mesmo computador e mostra um menu para escolher um deles ao ligar. Se você quer dual boot, siga [[09 - Dual boot com Windows|a trilha específica]] antes de particionar.
+
+> [!tip] Quer preparar um HD pelo pendrive?
+> Se a sua tarefa é apenas formatar um HD ou SSD para guardar arquivos, sem instalar o Mint nele, [[08 - Formatar um HD pelo pendrive|clique aqui para abrir essa sessão]].
 
 ## Navegação visual
 
@@ -49,6 +54,6 @@ Abra [[Mapa do guia.canvas|Mapa do guia]] para visualizar o fluxo completo em um
 ## Sobre
 
 - Linux Mint **22.3 Zena · Cinnamon**
-- Versão do guia **1.0.0**
+- Versão do guia **1.1.0**
 - Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)
 - Consulte também [[Fontes e créditos]]

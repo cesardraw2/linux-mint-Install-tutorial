@@ -57,6 +57,9 @@ Se o computador estiver em Legacy, o Mint ainda pode iniciar em modo BIOS/Legacy
 > [!warning] Caso Dell Legacy
 > Se o Windows do seu Dell aparece como `Legacy`, não mude para UEFI sem um plano de recuperação e backup. A Dell alerta que trocar o modo pode deixar a instalação atual do Windows sem inicializar; em modelos mais novos, Legacy pode nem ser suportado. Se a configuração estiver confusa, pare nesta etapa e confirme o modelo exato.
 
+> [!note] Sobre a tela “UEFI Boot Path Security”
+> Essa opção da BIOS controla **quando o menu de boot F12 pede a senha de administrador**. `Always Except Internal HDD` normalmente permite o disco interno sem senha e protege as outras entradas; ela **não informa** se o Windows está em UEFI ou Legacy e também não é o controle de Secure Boot. Para decidir o caminho do Mint, procure separadamente `Boot List Option`, `Secure Boot` e `SATA Operation`.
+
 ## Escolha o caminho antes de continuar
 
 - **Instalação limpa (SSD único):** você aceita apagar o sistema e os arquivos do SSD interno. Faça backup no HD externo, desconecte-o e use `Erase disk` somente depois de conferir o disco.

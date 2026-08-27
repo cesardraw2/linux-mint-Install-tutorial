@@ -1,4 +1,12 @@
-import { useEffect, useMemo, useState, type ComponentType } from "react";
+import {
+  createContext,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ComponentType,
+  type ReactNode,
+} from "react";
 import {
   ArrowRight,
   Check,
@@ -7,6 +15,7 @@ import {
   ExternalLink,
   HardDrive,
   Leaf,
+  ListChecks,
   Monitor,
   RefreshCw,
   Shield,
@@ -21,6 +30,8 @@ import { Screenshot } from "@/components/screenshot";
 import {
   attachmentUrl,
   guideHome,
+  glossaryEntries,
+  guideScenarios,
   guideSections,
   meta,
   type GuideSection,
@@ -28,6 +39,9 @@ import {
 import { cn } from "@/lib/utils";
 
 const STORAGE_KEY = "mint-guide-done-v1";
+const SCENARIO_KEY = "mint-guide-scenario-v1";
+const TASKS_KEY = "mint-guide-tasks-v1";
+const GlossaryContext = createContext<(id: string) => void>(() => {});
 const SECTION_ICONS: Record<string, ComponentType<LucideProps>> = {
   prereq: Shield,
   iso: Download,
@@ -82,35 +96,199 @@ export function Guide() {
     return () => observer.disconnect();
   }, []);
   const percentage = useMemo(() => Math.round(ratio * 100), [ratio]);
+  const [glossaryOpen, setGlossaryOpen] = useState<string | null>(null);
+  const glossary = glossaryEntries.find((entry) => entry.id === glossaryOpen);
 
   return (
-    <div className="min-h-screen bg-bg">
-      <a
-        href="#conteudo"
-        className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-leaf focus:px-4 focus:py-2 focus:text-leaf-fg"
-      >
-        Pular para o conteúdo
-      </a>
-      <SiteHeader percentage={percentage} />
-      <Hero />
+    <GlossaryContext.Provider value={setGlossaryOpen}>
+      <div className="min-h-screen bg-bg">
+        <a
+          href="#conteudo"
+          className="sr-only focus:not-sr-only focus:absolute focus:top-3 focus:left-3 focus:z-50 focus:rounded-md focus:bg-leaf focus:px-4 focus:py-2 focus:text-leaf-fg"
+        >
+          Pular para o conteúdo
+        </a>
+        <SiteHeader percentage={percentage} />
+        <Hero />
+        <ScenarioPlanner />
+        <div
+          id="conteudo"
+          className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-10 lg:grid-cols-[15rem_minmax(0,1fr)]"
+        >
+          <GuideNavigation active={active} done={done} />
+          <main className="min-w-0 space-y-20 pb-24">
+            {guideSections.map((section) => (
+              <GuideSectionView
+                key={section.id}
+                section={section}
+                done={done.includes(section.id)}
+                onToggle={() => toggle(section.id)}
+              />
+            ))}
+            <Footer />
+          </main>
+        </div>
+        {glossary ? (
+          <GlossaryDialog entry={glossary} onClose={() => setGlossaryOpen(null)} />
+        ) : null}
+      </div>
+    </GlossaryContext.Provider>
+  );
+}
+
+function GlossaryDialog({
+  entry,
+  onClose,
+}: {
+  entry: (typeof glossaryEntries)[number];
+  onClose: () => void;
+}) {
+  return (
+    <div
+      className="fixed inset-0 z-50 flex items-center justify-center bg-ink/60 p-4"
+      role="presentation"
+      onClick={onClose}
+    >
       <div
-        id="conteudo"
-        className="mx-auto grid w-full max-w-6xl gap-10 px-4 py-10 lg:grid-cols-[15rem_minmax(0,1fr)]"
+        className="w-full max-w-lg rounded-xl bg-bg p-6 shadow-xl"
+        role="dialog"
+        aria-modal="true"
+        aria-labelledby="glossary-dialog-title"
+        onClick={(event) => event.stopPropagation()}
       >
-        <GuideNavigation active={active} done={done} />
-        <main className="min-w-0 space-y-20 pb-24">
-          {guideSections.map((section) => (
-            <GuideSectionView
-              key={section.id}
-              section={section}
-              done={done.includes(section.id)}
-              onToggle={() => toggle(section.id)}
-            />
-          ))}
-          <Footer />
-        </main>
+        <div className="flex items-start justify-between gap-4">
+          <div>
+            <p className="text-xs font-medium tracking-[0.16em] text-leaf uppercase">Glossário</p>
+            <h2 id="glossary-dialog-title" className="mt-1 font-display text-2xl font-medium">
+              {entry.term}
+            </h2>
+          </div>
+          <button type="button" className="text-sm text-muted hover:text-ink" onClick={onClose}>
+            Fechar
+          </button>
+        </div>
+        <p className="mt-5 leading-relaxed text-muted">{entry.definition}</p>
+        <a
+          className="mt-5 inline-flex font-medium text-leaf underline-offset-2 hover:underline"
+          href={`#${entry.id}`}
+          onClick={onClose}
+        >
+          Ver no glossário completo
+        </a>
       </div>
     </div>
+  );
+}
+
+function ScenarioPlanner() {
+  const [selectedId, setSelectedId] = useState(guideScenarios[0]?.id ?? "");
+  const [completed, setCompleted] = useState<Record<string, boolean>>({});
+  const [ready, setReady] = useState(false);
+  const selected =
+    guideScenarios.find((scenario) => scenario.id === selectedId) ?? guideScenarios[0];
+
+  useEffect(() => {
+    try {
+      const savedScenario = localStorage.getItem(SCENARIO_KEY);
+      const savedTasks = localStorage.getItem(TASKS_KEY);
+      if (savedScenario && guideScenarios.some((scenario) => scenario.id === savedScenario)) {
+        setSelectedId(savedScenario);
+      }
+      if (savedTasks) setCompleted(JSON.parse(savedTasks) as Record<string, boolean>);
+    } catch {
+      /* O planejador continua disponível mesmo sem localStorage. */
+    } finally {
+      setReady(true);
+    }
+  }, []);
+
+  if (!selected) return null;
+  const finished = selected.tasks.filter((task) => completed[task.id]).length;
+
+  const chooseScenario = (id: string) => {
+    setSelectedId(id);
+    localStorage.setItem(SCENARIO_KEY, id);
+  };
+  const toggleTask = (id: string) => {
+    setCompleted((previous) => {
+      const next = { ...previous, [id]: !previous[id] };
+      localStorage.setItem(TASKS_KEY, JSON.stringify(next));
+      return next;
+    });
+  };
+
+  return (
+    <section className="border-b border-border bg-surface" aria-labelledby="planejador-titulo">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6">
+        <div className="grid gap-6 lg:grid-cols-[minmax(0,20rem)_1fr] lg:items-start">
+          <div className="space-y-3">
+            <p className="flex items-center gap-2 text-xs font-medium tracking-[0.16em] text-leaf uppercase">
+              <ListChecks className="size-3.5" />
+              Antes de começar
+            </p>
+            <h2 id="planejador-titulo" className="font-display text-2xl font-medium">
+              Escolha seu cenário
+            </h2>
+            <p className="text-sm leading-relaxed text-muted">
+              O guia monta um TODO diferente para cada objetivo. Você pode trocar de cenário depois;
+              o progresso fica salvo neste navegador.
+            </p>
+            <label className="block text-sm font-medium text-ink" htmlFor="scenario-select">
+              Como você pretende usar o computador?
+            </label>
+            <select
+              id="scenario-select"
+              value={selected.id}
+              onChange={(event) => chooseScenario(event.target.value)}
+              className="w-full rounded-md border border-border bg-bg px-3 py-2 text-sm text-ink"
+              disabled={!ready}
+            >
+              {guideScenarios.map((scenario) => (
+                <option key={scenario.id} value={scenario.id}>
+                  {scenario.label}
+                </option>
+              ))}
+            </select>
+          </div>
+          <div className="rounded-xl bg-bg p-5 shadow-border">
+            <div className="flex flex-wrap items-baseline justify-between gap-2">
+              <div>
+                <h3 className="font-display text-xl font-medium">{selected.label}</h3>
+                <p className="mt-1 text-sm text-muted">{selected.summary}</p>
+              </div>
+              <span className="font-mono text-sm text-leaf">
+                {finished}/{selected.tasks.length} feitas
+              </span>
+            </div>
+            <ul className="mt-5 space-y-3">
+              {selected.tasks.map((task) => (
+                <li key={task.id} className="flex items-start gap-3 text-sm">
+                  <input
+                    type="checkbox"
+                    checked={Boolean(completed[task.id])}
+                    onChange={() => toggleTask(task.id)}
+                    className="mt-1 size-4 shrink-0 accent-leaf"
+                    aria-label={task.label}
+                  />
+                  <span className={cn(completed[task.id] && "text-muted line-through")}>
+                    {task.sectionId ? (
+                      <a
+                        className="text-leaf underline-offset-2 hover:underline"
+                        href={`#${task.sectionId}`}
+                      >
+                        {task.label}
+                      </a>
+                    ) : (
+                      task.label
+                    )}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -261,7 +439,7 @@ function GuideSectionView({
 }
 
 function normalizeObsidian(markdown: string): string {
-  return markdown
+  const normalized = markdown
     .replace(/!\[\[([^\]]+)\]\]/g, (_, path: string) => {
       const url = attachmentUrl(path.trim());
       return url ? `![${path.split("/").at(-1) ?? "Imagem do guia"}](${url})` : "";
@@ -276,6 +454,23 @@ function normalizeObsidian(markdown: string): string {
     })
     .replace(/^\[←[^\n]+$/gm, "")
     .replace(/^> \[!\w+\]\s*(.+)$/gm, "> **$1**");
+  return linkGlossaryTerms(normalized);
+}
+
+function linkGlossaryTerms(markdown: string): string {
+  const terms = [...glossaryEntries]
+    .sort((a, b) => b.term.length - a.term.length)
+    .map((entry) => entry.term.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+  if (!terms.length) return markdown;
+  const expression = new RegExp(`(?<![\\w#/])(${terms.join("|")})(?![\\w-])`, "gi");
+  return markdown
+    .split(/(`[^`]*`)/g)
+    .map((part, index) =>
+      index % 2 === 1
+        ? part
+        : part.replace(expression, (term) => `[${term}](#glossary-${slugify(term)})`),
+    )
+    .join("");
 }
 
 function slugify(value: string): string {
@@ -313,17 +508,7 @@ const markdownComponents: Components = {
       {children}
     </aside>
   ),
-  a: ({ href, children }) => (
-    <a
-      href={href}
-      target={href?.startsWith("http") ? "_blank" : undefined}
-      rel={href?.startsWith("http") ? "noreferrer" : undefined}
-      className="inline-flex items-center gap-1 font-medium text-leaf underline-offset-2 hover:underline"
-    >
-      {children}
-      {href?.startsWith("http") ? <ExternalLink className="size-3.5" /> : null}
-    </a>
-  ),
+  a: ({ href, children }) => <MarkdownLink href={href} children={children} />,
   img: ({ src, alt }) =>
     src ? (
       <Screenshot
@@ -346,6 +531,37 @@ const markdownComponents: Components = {
   code: ({ children }) => <code className="font-mono text-sm text-ink">{children}</code>,
   input: ({ style: _style, ...props }) => <input {...props} />,
 };
+
+function MarkdownLink({ href, children }: { href?: string; children?: ReactNode }) {
+  const openGlossary = useContext(GlossaryContext);
+  if (href?.startsWith("#glossary-")) {
+    const id = href.slice("#glossary-".length);
+    const entry = glossaryEntries.find((item) => item.id === id);
+    if (entry) {
+      return (
+        <button
+          type="button"
+          title={entry.definition}
+          onClick={() => openGlossary(entry.id)}
+          className="font-medium text-leaf underline decoration-dotted underline-offset-2 hover:decoration-solid"
+        >
+          {children}
+        </button>
+      );
+    }
+  }
+  return (
+    <a
+      href={href}
+      target={href?.startsWith("http") ? "_blank" : undefined}
+      rel={href?.startsWith("http") ? "noreferrer" : undefined}
+      className="inline-flex items-center gap-1 font-medium text-leaf underline-offset-2 hover:underline"
+    >
+      {children}
+      {href?.startsWith("http") ? <ExternalLink className="size-3.5" /> : null}
+    </a>
+  );
+}
 
 function MarkdownContent({ markdown }: { markdown: string }) {
   return (
