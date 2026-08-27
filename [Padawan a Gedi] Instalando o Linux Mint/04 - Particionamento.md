@@ -79,7 +79,7 @@ Em um SSD de 256 GB, reserve cerca de **80 GB para `/`** e use o restante em `/h
 
 1. Na tela anterior, escolha **Something else / Algo mais**.
 2. Identifique o SSD pelo modelo e tamanho. `nvme0n1` costuma ser SSD; não confie apenas no nome.
-3. Se a intenção é **zerar o SSD**, confira novamente o modelo e o tamanho e clique em **New Partition Table…**. Confirme a remoção da tabela antiga e escolha **GPT**. Isso apaga todas as partições do SSD de uma vez; não é necessário removê-las uma por uma.
+3. Se a intenção é **zerar o SSD**, confira novamente o modelo e o tamanho e clique em **New Partition Table…**. Confirme a remoção da tabela antiga. Nesta versão do instalador não há uma segunda escolha de tipo: como o pendrive foi iniciado em UEFI, a tabela criada será automaticamente compatível com UEFI (GPT). Isso apaga todas as partições do SSD de uma vez; não é necessário removê-las uma por uma.
 4. No espaço livre, crie uma partição **EFI/ESP** de 300–512 MB, FAT32, com a flag `boot/esp`.
 5. Crie uma partição `/` de 60–80 GB, em `ext4`, para o sistema e os aplicativos.
 6. Crie uma partição `/home` em `ext4` com todo o espaço restante, para documentos e configurações pessoais.
@@ -87,7 +87,7 @@ Em um SSD de 256 GB, reserve cerca de **80 GB para `/`** e use o restante em `/h
 8. Em **Device for boot loader installation**, escolha o SSD inteiro, não uma partição.
 
 > [!danger] Pare antes do botão final
-> **New Partition Table… remove todas as partições do disco selecionado.** Faça isso somente no SSD que pode ser apagado e somente depois de confirmar o backup. Nunca selecione o HD externo. Na coluna **Format?**, marque `/` e `/home` e, se a EFI foi criada agora, marque-a também.
+> **New Partition Table… remove todas as partições do disco selecionado.** Faça isso somente no SSD que pode ser apagado e somente depois de confirmar o backup. Nunca selecione o HD externo. Se o instalador tiver sido iniciado em Legacy/BIOS, ele poderá criar uma tabela diferente; não misture esse modo com uma instalação UEFI. Na coluna **Format?**, marque `/` e `/home` e, se a EFI foi criada agora, marque-a também.
 
 > [!warning] Quando aparece “BitLocker”
 > Na imagem, `nvme0n1p3` é a partição do Windows protegida pelo BitLocker; as outras são a EFI, a MSR e a recuperação. Como este é o cenário de **instalação limpa**, clicar em **New Partition Table…** no disco inteiro `/dev/nvme0n1` apagará todas elas, inclusive o BitLocker. Não tente “formatar” o BitLocker individualmente nem use **Alterar…**. Se a intenção fosse manter o Windows, pare aqui e siga [[09 - Dual boot com Windows|a trilha de dual boot]].
