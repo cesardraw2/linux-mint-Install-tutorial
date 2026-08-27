@@ -53,21 +53,22 @@ Para uma instalação limpa no SSD, **não é obrigatório** criar tudo manualme
 - Partições pequenas demais causam problemas quando o sistema cresce.
 - `/home` separado não é backup: se o SSD quebrar, as duas partições podem ser perdidas.
 
-Para o caso do seu filho, a escolha mais simples continua sendo **uma única partição raiz no SSD**, com o `swapfile` automático. Se quiser praticar o particionamento manual, use o roteiro abaixo e só prossiga quando conseguir identificar cada linha.
+Para quem quer seguir boas práticas e separar sistema de arquivos pessoais, recomendamos o esquema manual com **EFI + `/` + `/home`**. Se você nunca particionou um disco, a instalação automática continua sendo mais segura; não escolha o modo manual apenas para “ter mais partições”.
 
 ## Papel de cada disco
 
 - **SSD — velocidade:** sistema, programas e swap.
 - **HD externo — cópia e capacidade:** backup, documentos, fotos, vídeos e jogos. Conecte-o depois da instalação e, se quiser compartilhá-lo com Windows, prefira exFAT; para uso somente no Linux, ext4 é uma opção.
 
-## Esquema recomendado — SSD único
+## Esquema recomendado — SSD único com `/home` separado
 
-| Ponto |    Tamanho | Formato | Disco | Função                   |
-| ----- | ---------: | ------- | ----- | ------------------------ |
-| EFI   | 300–512 MB | FAT32   | SSD   | Boot UEFI                |
-| `/`   |   restante | ext4    | SSD   | Sistema, apps e arquivos |
+| Ponto   |    Tamanho | Formato | Disco | Função                              |
+| ------- | ---------: | ------- | ----- | ----------------------------------- |
+| EFI     | 300–512 MB | FAT32   | SSD   | Inicialização UEFI                  |
+| `/`     |   60–80 GB | ext4    | SSD   | Mint, atualizações e aplicativos    |
+| `/home` |   restante | ext4    | SSD   | Documentos e configurações pessoais |
 
-O instalador pode criar o `swapfile` automaticamente. Não é necessário criar uma partição para o HD externo.
+Em um SSD de 256 GB, reserve cerca de **80 GB para `/`** e use o restante em `/home`. O instalador pode criar o `swapfile` automaticamente; não é necessário criar uma partição swap separada. O HD externo continua sendo o local recomendado para backups.
 
 > [!note] Swap e EFI
 > Se pular a swap, o Mint cria um `swapfile` na raiz. Em PCs UEFI, a EFI de 500 MB FAT32 é obrigatória; não a monte em `/`.
@@ -80,13 +81,13 @@ O instalador pode criar o `swapfile` automaticamente. Não é necessário criar 
 2. Identifique o SSD pelo modelo e tamanho. `nvme0n1` costuma ser SSD; não confie apenas no nome.
 3. Se o SSD estiver vazio em UEFI, crie uma tabela **GPT**.
 4. Crie uma partição **EFI/ESP** de 300–512 MB, FAT32, com a flag `boot/esp`.
-5. Crie uma partição `/` de pelo menos 50–100 GB, em `ext4`.
-6. Opcionalmente, crie `/home` em `ext4` com o espaço restante. Para iniciantes, uma única `/` é mais simples.
+5. Crie uma partição `/` de 60–80 GB, em `ext4`, para o sistema e os aplicativos.
+6. Crie uma partição `/home` em `ext4` com todo o espaço restante, para documentos e configurações pessoais.
 7. Não crie uma partição swap: o Mint pode usar um `swapfile` automaticamente.
 8. Em **Device for boot loader installation**, escolha o SSD inteiro, não uma partição.
 
 > [!danger] Pare antes do botão final
-> Na coluna **Format?**, marque somente as partições Linux que você acabou de criar. Não formate uma EFI que você não reconhece, nem qualquer partição do HD externo. Se uma linha ou tamanho não fizer sentido, volte e use `Erase disk` no SSD correto ou peça ajuda.
+> Na coluna **Format?**, marque as novas partições `/` e `/home`. Marque a EFI nova somente se o SSD foi zerado e você acabou de criá-la. Não formate uma EFI que você não reconhece, nem qualquer partição do HD externo. Se uma linha ou tamanho não fizer sentido, volte e peça ajuda.
 
 ## Concluir etapa
 

@@ -45,7 +45,9 @@ resumo: Instalar no SSD e manter o HD externo como cópia e armazenamento, sem d
 - [ ] [02] Gravar o pendrive sem apenas copiar o arquivo ISO
 - [ ] [03] Testar a sessão live e o reconhecimento do SSD
 - [ ] [04] Escolher o SSD pelo modelo e tamanho; nunca pelo nome `sda` sozinho
-- [ ] [04] Instalar o Mint no SSD com uma única raiz ext4 e swapfile automático
+- [ ] [04] Escolher `Something else` e abrir a tela de particionamento
+- [ ] [04] Criar EFI, `/` (cerca de 80 GB) e `/home` (espaço restante) em ext4
+- [ ] [04] Manter o swapfile automático e confirmar o SSD como destino do bootloader
 - [ ] [08] Depois da instalação, escolher ext4 (Linux) ou exFAT (Linux + Windows) para o HD externo
 
 ## Cenário: dual-boot-uefi
