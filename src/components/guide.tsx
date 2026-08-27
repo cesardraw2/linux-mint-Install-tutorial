@@ -37,6 +37,7 @@ const SECTION_ICONS: Record<string, ComponentType<LucideProps>> = {
   finish: UserRound,
   after: RefreshCw,
   problems: CircleAlert,
+  "format-disk": HardDrive,
 };
 
 function useDone() {
