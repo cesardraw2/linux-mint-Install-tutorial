@@ -14,7 +14,7 @@ tags: [fontes, créditos, linux-mint]
 - [Dell Vostro 5402 — F12 One Time Boot](https://www.dell.com/support/manuals/en-us/vostro-14-5402-laptop/mkb_5402_servicemanual/one-time-boot-menu?guid=guid-71da763a-3f2f-4021-8ef7-3e50da009c74&lang=en-us): seleção temporária do pendrive.
 - [GParted — Manual](https://gparted.org/display-doc.php?name=help-manual): desmontagem, formatação e riscos de edição de partições.
 
-Versão do guia: **1.2.5**
+Versão do guia: **1.2.6**
 Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)
 
 [[Início|← Voltar ao início]]
