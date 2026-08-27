@@ -7,7 +7,7 @@ tags:
   - linux-mint
   - instalação
   - série-padawan-a-gedi
-version: 1.1.0
+version: 1.2.0
 edition: Cinnamon
 release: 22.3 Zena
 author: cesardraw@gmail.com
@@ -54,6 +54,6 @@ Abra [[Mapa do guia.canvas|Mapa do guia]] para visualizar o fluxo completo em um
 ## Sobre
 
 - Linux Mint **22.3 Zena · Cinnamon**
-- Versão do guia **1.1.0**
+- Versão do guia **1.2.0**
 - Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)
 - Consulte também [[Fontes e créditos]]
