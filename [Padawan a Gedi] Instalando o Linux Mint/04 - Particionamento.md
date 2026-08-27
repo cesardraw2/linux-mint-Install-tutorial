@@ -89,6 +89,9 @@ Em um SSD de 256 GB, reserve cerca de **80 GB para `/`** e use o restante em `/h
 > [!danger] Pare antes do botão final
 > **New Partition Table… remove todas as partições do disco selecionado.** Faça isso somente no SSD que pode ser apagado e somente depois de confirmar o backup. Nunca selecione o HD externo. Na coluna **Format?**, marque `/` e `/home` e, se a EFI foi criada agora, marque-a também.
 
+> [!warning] Quando aparece “BitLocker”
+> Na imagem, `nvme0n1p3` é a partição do Windows protegida pelo BitLocker; as outras são a EFI, a MSR e a recuperação. Como este é o cenário de **instalação limpa**, clicar em **New Partition Table…** no disco inteiro `/dev/nvme0n1` apagará todas elas, inclusive o BitLocker. Não tente “formatar” o BitLocker individualmente nem use **Alterar…**. Se a intenção fosse manter o Windows, pare aqui e siga [[09 - Dual boot com Windows|a trilha de dual boot]].
+
 ## Concluir etapa
 
 - [ ] Disco correto identificado pelo tamanho
