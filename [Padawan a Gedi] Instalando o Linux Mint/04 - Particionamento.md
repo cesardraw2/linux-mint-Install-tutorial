@@ -31,6 +31,11 @@ A opção **Erase disk and install Linux Mint** formata o disco escolhido. Só u
 
 ![[Anexos/official-installer-partitions.png]]
 
+> [!important] Como chegar à tela da imagem
+> Se você quer **criar ou escolher partições manualmente**, precisa voltar à tela **Tipo de instalação** e selecionar **Something else / Algo mais**. Só essa escolha abre a tela detalhada de particionamento mostrada acima, com a tabela de dispositivos, a coluna **Format?** e o campo **Device for boot loader installation**.
+>
+> Se escolher **Erase disk and install Linux Mint**, o instalador prepara as partições automaticamente e **não** abrirá essa tela completa. Para dual boot, escolha **Install Linux Mint alongside Windows** e siga a trilha específica; não selecione `Something else` sem saber exatamente o que fará.
+
 ## Criar as partições manualmente: quando vale a pena?
 
 Para uma instalação limpa no SSD, **não é obrigatório** criar tudo manualmente. A opção `Erase disk` já cria uma estrutura funcional. O particionamento manual faz sentido quando você quer separar melhor o sistema dos seus arquivos ou quando precisa controlar exatamente o espaço usado.
