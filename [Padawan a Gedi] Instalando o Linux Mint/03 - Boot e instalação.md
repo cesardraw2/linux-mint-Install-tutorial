@@ -99,6 +99,9 @@ Escolha **Portuguese (Brazil)** → Continue.
 
 Escolha Portuguese (Brazil) / Portuguese e teste os acentos.
 
+> [!tip] Teclado brasileiro com Ç
+> Se o teclado físico tem a tecla **Ç**, ele normalmente é o padrão brasileiro **ABNT2**. Escolha `Portuguese (Brazil)` (ou `Brazil`/`ABNT2`, se essa variação aparecer). No campo de teste, confirme `ç`, `Ç`, `ã`, `õ`, `á`, `é`, `ê`, `?` e `/` antes de continuar. Não escolha `Portuguese (Portugal)` ou `English (US)`, pois várias teclas ficarão deslocadas.
+
 ### Internet
 
 ![[Anexos/official-installer-internet.png]]

@@ -34,6 +34,10 @@ Arquivo que contém uma cópia completa da mídia de instalação do Linux Mint.
 
 Pendrive preparado para iniciar um computador antes do sistema instalado. A gravação apaga o conteúdo anterior do pendrive.
 
+### ABNT2
+
+Padrão brasileiro de teclado que normalmente tem a tecla `Ç` e posições próprias para acentos e símbolos.
+
 ### Sessão live
 
 Modo temporário iniciado pelo pendrive. Permite testar o Mint e usar ferramentas como Discos sem instalar o sistema.
