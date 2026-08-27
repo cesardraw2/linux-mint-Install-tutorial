@@ -34,12 +34,13 @@ hero-image: Anexos/wiki-mint-22-3.png
 - [ ] [[06 - Ajustes no primeiro dia]]
 - [ ] [[07 - Problemas comuns]]
 - [ ] [[08 - Formatar um HD pelo pendrive]]
+- [ ] [[09 - Dual boot com Windows]]
 
 > [!tip] Como continuar de onde parou
 > Marque cada caixa ao concluir a etapa. O Obsidian salva a alteração no arquivo e mantém seu progresso. Use os links **Anterior**, **Início** e **Próxima** no final de cada nota.
 
 > [!important] Escolha seu cenário
-> Este guia foi escrito para uma instalação do Mint. **Dual boot** significa manter Windows e Linux no mesmo computador e escolher um deles ao ligar. Se essa é a sua meta, pare antes do particionamento e leia todos os avisos da etapa 00.
+> **Instalação limpa** apaga o sistema do disco escolhido. **Dual boot** mantém Windows e Linux no mesmo computador e mostra um menu para escolher um deles ao ligar. Se você quer dual boot, siga [[09 - Dual boot com Windows|a trilha específica]] antes de particionar.
 
 ## Navegação visual
 

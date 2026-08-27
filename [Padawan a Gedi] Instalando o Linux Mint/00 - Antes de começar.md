@@ -26,11 +26,11 @@ Depois, você usa esse pendrive no **computador de destino**, onde o Linux Mint 
 
 ## O que este caminho instala
 
-Este caminho instala o Linux Mint; **não é um tutorial completo de dual boot (Windows e Linux na mesma máquina)**.
+Este guia tem duas trilhas: **instalação limpa** (Mint sozinho) e **dual boot** (Windows e Mint no mesmo computador). Escolha uma antes de chegar ao particionamento.
 
 Dual boot significa manter dois sistemas operacionais no mesmo computador e escolher, em um menu, qual deles iniciar a cada vez. O esquema **SSD + HD** mostrado mais adiante não é dual boot: ele coloca o Mint no SSD e os arquivos pessoais no HD.
 
-Se você quer manter o Windows, não avance no particionamento deste caminho sem antes seguir uma orientação específica de dual boot. A opção **Install Linux Mint alongside Windows** pode redimensionar o Windows automaticamente, mas ainda exige backup e conferência das partições.
+Se você quer manter o Windows, siga a trilha completa [[09 - Dual boot com Windows|Dual boot com Windows]]. Ela explica backup, BitLocker, modo de inicialização, espaço livre e como conferir a tela do instalador.
 
 > [!danger] Não misture os modos de inicialização
 > Windows e Linux devem ser instalados no mesmo modo de inicialização: os dois em **UEFI** ou os dois em **Legacy/BIOS**. Não troque Legacy por UEFI “para testar” depois que o Windows já funciona; em alguns computadores isso impede o Windows de iniciar.
@@ -49,7 +49,7 @@ Se o computador estiver em Legacy, o Mint ainda pode iniciar em modo BIOS/Legacy
 ## Escolha o caminho antes de continuar
 
 - **Instalação limpa:** você aceita apagar o sistema e os arquivos do disco de destino. Siga este guia e use `Erase disk` somente depois de conferir o disco.
-- **Dual boot:** você quer manter o Windows e escolher Windows ou Linux ao ligar o computador. Pare e siga uma orientação específica de dual boot; não use `Erase disk`.
+- **Dual boot:** você quer manter o Windows e escolher Windows ou Linux ao ligar o computador. Abra [[09 - Dual boot com Windows|a trilha de dual boot]] e não use `Erase disk`.
 
 Se você não sabe qual dos dois quer, **pare antes do particionamento**. Resolva essa dúvida antes de clicar em qualquer botão que formate um disco.
 

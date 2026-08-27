@@ -38,6 +38,7 @@ const SECTION_ICONS: Record<string, ComponentType<LucideProps>> = {
   after: RefreshCw,
   problems: CircleAlert,
   "format-disk": HardDrive,
+  "dual-boot": Monitor,
 };
 
 function useDone() {

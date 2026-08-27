@@ -13,7 +13,7 @@ Esta etapa acontece no **computador de destino**. O computador usado para baixar
 ## Decida qual cenário é o seu
 
 - **Instalação limpa:** o disco de destino pode ser apagado. `Erase disk and install Linux Mint` instala o Mint sozinho nesse disco.
-- **Windows + Mint (dual boot):** o Windows precisa continuar intacto. Não escolha `Erase disk`; use `Install Linux Mint alongside Windows` apenas com backup e entendendo o redimensionamento automático.
+- **Windows + Mint (dual boot):** o Windows precisa continuar intacto. Siga primeiro [[09 - Dual boot com Windows|a trilha de dual boot]]; depois, nesta tela, use `Install Linux Mint alongside Windows` somente após revisar o resumo. Nunca escolha `Erase disk`.
 - **Algo mais:** é o particionamento manual. Ele não é uma “opção segura” por si só; um clique na partição errada pode apagar dados.
 
 > [!danger] A tela mais fácil de errar
