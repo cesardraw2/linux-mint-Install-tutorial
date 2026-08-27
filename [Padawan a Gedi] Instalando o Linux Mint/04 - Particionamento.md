@@ -31,6 +31,25 @@ A opção **Erase disk and install Linux Mint** formata o disco escolhido. Só u
 
 ![[Anexos/official-installer-partitions.png]]
 
+## Criar as partições manualmente: quando vale a pena?
+
+Para uma instalação limpa no SSD, **não é obrigatório** criar tudo manualmente. A opção `Erase disk` já cria uma estrutura funcional. O particionamento manual faz sentido quando você quer separar melhor o sistema dos seus arquivos ou quando precisa controlar exatamente o espaço usado.
+
+### Vantagens
+
+- Você pode reinstalar o sistema sem apagar uma partição `/home` separada.
+- Fica mais fácil identificar onde estão o sistema e os arquivos pessoais.
+- Você controla o tamanho reservado para o sistema e para os dados.
+- Em uma configuração com mais de um sistema, reduz o risco de escolher o disco errado — desde que as partições sejam identificadas com certeza.
+
+### Desvantagens
+
+- Um erro de seleção ou de formatação pode apagar o SSD inteiro.
+- Partições pequenas demais causam problemas quando o sistema cresce.
+- `/home` separado não é backup: se o SSD quebrar, as duas partições podem ser perdidas.
+
+Para o caso do seu filho, a escolha mais simples continua sendo **uma única partição raiz no SSD**, com o `swapfile` automático. Se quiser praticar o particionamento manual, use o roteiro abaixo e só prossiga quando conseguir identificar cada linha.
+
 ## Papel de cada disco
 
 - **SSD — velocidade:** sistema, programas e swap.
@@ -50,15 +69,19 @@ O instalador pode criar o `swapfile` automaticamente. Não é necessário criar 
 
 ![[Anexos/official-installer-partition.png]]
 
-## Criação manual
+## Criação manual no SSD (opção avançada)
 
-1. Identifique o disco pelo tamanho. `nvme0n1` costuma ser SSD e `sda` costuma ser HD.
-2. Se a tabela estiver vazia em UEFI, crie uma tabela GPT.
-3. EFI: 500 MB, FAT32, flag boot/esp.
-4. swap: 4 a 8 GB, tipo swap.
-5. `/`: 50 a 100 GB, ext4.
-6. `/home`: restante do SSD, ext4 (ou deixe o instalador usar uma única raiz).
-7. Em **Device for boot loader installation**, escolha o SSD inteiro, não uma partição.
+1. Na tela anterior, escolha **Something else / Algo mais**.
+2. Identifique o SSD pelo modelo e tamanho. `nvme0n1` costuma ser SSD; não confie apenas no nome.
+3. Se o SSD estiver vazio em UEFI, crie uma tabela **GPT**.
+4. Crie uma partição **EFI/ESP** de 300–512 MB, FAT32, com a flag `boot/esp`.
+5. Crie uma partição `/` de pelo menos 50–100 GB, em `ext4`.
+6. Opcionalmente, crie `/home` em `ext4` com o espaço restante. Para iniciantes, uma única `/` é mais simples.
+7. Não crie uma partição swap: o Mint pode usar um `swapfile` automaticamente.
+8. Em **Device for boot loader installation**, escolha o SSD inteiro, não uma partição.
+
+> [!danger] Pare antes do botão final
+> Na coluna **Format?**, marque somente as partições Linux que você acabou de criar. Não formate uma EFI que você não reconhece, nem qualquer partição do HD externo. Se uma linha ou tamanho não fizer sentido, volte e use `Erase disk` no SSD correto ou peça ajuda.
 
 ## Concluir etapa
 
