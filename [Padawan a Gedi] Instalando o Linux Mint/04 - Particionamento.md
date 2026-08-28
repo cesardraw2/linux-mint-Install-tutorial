@@ -80,7 +80,7 @@ Em um SSD de 256 GB, reserve cerca de **80 GB para `/`** e use o restante em `/h
 1. Na tela anterior, escolha **Something else / Algo mais**.
 2. Identifique o SSD pelo modelo e tamanho. `nvme0n1` costuma ser SSD; não confie apenas no nome.
 3. Se a intenção é **zerar o SSD**, confira novamente o modelo e o tamanho e clique em **New Partition Table…**. Confirme a remoção da tabela antiga. Nesta versão do instalador não há uma segunda escolha de tipo: como o pendrive foi iniciado em UEFI, a tabela criada será automaticamente compatível com UEFI (GPT). Isso apaga todas as partições do SSD de uma vez; não é necessário removê-las uma por uma.
-4. No espaço livre, crie uma partição **EFI/ESP** de 300–512 MB, FAT32, com a flag `boot/esp`.
+4. No espaço livre, crie uma partição **EFI/ESP** de 300–512 MB, FAT32, com a flag `boot/esp` e o ponto de montagem `/boot/efi`.
 5. Crie uma partição `/` de 60–80 GB, em `ext4`, para o sistema e os aplicativos.
 6. Crie uma partição `/home` em `ext4` com todo o espaço restante, para documentos e configurações pessoais.
 7. Não crie uma partição swap: o Mint pode usar um `swapfile` automaticamente.
