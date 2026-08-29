@@ -7,7 +7,7 @@ tags:
   - linux-mint
   - instalação
   - série-padawan-a-gedi
-version: 1.2.9
+version: 1.3.0
 edition: Cinnamon
 release: 22.3 Zena
 author: cesardraw@gmail.com
@@ -36,7 +36,7 @@ hero-image: Anexos/wiki-mint-22-3.png
 - [ ] [[08 - Formatar um HD pelo pendrive]]
 - [ ] [[09 - Dual boot com Windows]]
 - [ ] [[10 - Glossário]]
-- [ ] [[10 - Glossário]]
+- [ ] [[11 - Dicas de energia e suspensão]]
 
 > [!tip] Como continuar de onde parou
 > Marque cada caixa ao concluir a etapa. O Obsidian salva a alteração no arquivo e mantém seu progresso. Use os links **Anterior**, **Início** e **Próxima** no final de cada nota.
@@ -54,6 +54,6 @@ Abra [[Mapa do guia.canvas|Mapa do guia]] para visualizar o fluxo completo em um
 ## Sobre
 
 - Linux Mint **22.3 Zena · Cinnamon**
-- Versão do guia **1.2.9**
+- Versão do guia **1.3.0**
 - Desenvolvido por [cesardraw@gmail.com](mailto:cesardraw@gmail.com)
 - Consulte também [[Fontes e créditos]]
